@@ -386,25 +386,3 @@ if(BUILD_googletest)
   list(POP_BACK CMAKE_MESSAGE_INDENT)
   message(CHECK_PASS "fetched")
 endif()
-
-cmake_minimum_required(VERSION 3.10)
-project(YourProject)
-
-# Set the Coin-OR Cbc directory to include the Homebrew installation directory
-set(COIN_INSTALL_DIR "/opt/homebrew/opt/cbc")
-
-# Add CMAKE_PREFIX_PATH to include the installation directory
-list(APPEND CMAKE_PREFIX_PATH "${COIN_INSTALL_DIR}")
-
-# Find the Coin-OR packages
-find_package(CoinUtils REQUIRED)
-find_package(Osi REQUIRED)
-find_package(Clp REQUIRED)
-find_package(Cgl REQUIRED)
-find_package(Cbc REQUIRED)
-
-# Your other CMake configurations
-add_executable(YourExecutable main.cpp)
-
-# Link the Cbc library and its dependencies
-target_link_libraries(YourExecutable Coin::Cbc Coin::CbcSolver Coin::CoinUtils Coin::Osi Coin::Clp Coin::Cgl)
